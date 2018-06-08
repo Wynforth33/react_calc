@@ -6,7 +6,7 @@ import Display from '../Display/Display'; // <Display />
 import MemoryFunctions from '../MemoryFunctions/MemoryFunctions'; // <MemoryFunctions />
 import Keyboard from '../Keyboard/Keyboard'; // <Keyboard />
 import Memory from '../../Util/Memory/Memory'; // 'Memory' Object
-import Data from '../../Util/Data/Data';
+import Data from '../../Util/Data/Data'; // 'Data' Object
 
 // Create <App /> ['React'(Component)]
 class App extends React.Component {
@@ -20,8 +20,13 @@ class App extends React.Component {
       firstTerm: 0,
       currentOperator:'',
     };
+    this.getMenu = this.getMenu.bind(this);
+    this.getHistory = this.getHistory.bind(this);
+    this.setMainDisplay = this.setMainDisplay.bind(this);
+    this.setSecondaryDisplay = this.setSecondaryDisplay.bind(this);
+
   }
-  
+
   getMenu(){
     alert('Under Construction!');
   }
@@ -31,29 +36,20 @@ class App extends React.Component {
     // console.log(Data.history);
     // console.log(Data);
   }
-  displayValue: val => {
-    const input = document.getElementById('display').innerHTML
-  	if (input.length < 11) {
-  		document.getElementById('display').innerHTML += val;
-  	}
+  setMainDisplay(val){},
+
+  setSecondaryDisplay(val){},
+
+  clearData(){},
+
+  clearEquation(){},
+
+  clearDisplay(){
+    this.setState({mainDisplay: ''});
   },
-  displayValueSecondary: val => {
-  	document.getElementById('secondary-display').innerHTML = '';
-  	document.getElementById('secondary-display').innerHTML += val;
-  },
-  clearData: () => {
-  	data.equation = '';
-  	data.firstTerm = 0;
-  	data.currentOperator = '';
-  },
-  clearEquation: () => {
-  	data.equation = '';
-  },
-  clearDisplay: () => {
-  	document.getElementById('display').innerHTML = '';
-  },
-  clearSecondaryDisplay: () => {
-  	document.getElementById('secondary-display').innerHTML = '';
+
+  clearSecondaryDisplay(){
+    this.setState({secondaryDisplay: ''});
   },
 
   render() {
@@ -61,7 +57,11 @@ class App extends React.Component {
       <Header getMenu={this.getMenu} getHistory={this.getHistory} />
       <Display secondaryDisplay={this.state.secondaryDisplay} mainDisplay={this.state.secondaryDisplay} />
       <MemoryFunctions />
-      <Keyboard />
+      <Keyboard
+        clearData={this.clearData}
+        clearEquation={this.clearEquation}
+        clearDisplay={this.clearDisplay}
+        clearSecondaryDisplay={this.clearSecondaryDisplay} />
     );
   }
 }

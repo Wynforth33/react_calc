@@ -5,7 +5,9 @@ import './MainDisplay.css'; // 'MainDisplay' Stylesheet
 // Create <MainDisplay /> ['React'(Component)]
 class MainDisplay extends React.Component {
   render(){
-    return ();
+    return (
+      <div className="flex-row" id="display"></div>
+    );
   }
 }
 
