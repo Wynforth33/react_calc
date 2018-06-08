@@ -10,11 +10,12 @@ class Button extends React.Component {
   }
 
   handleClick(){
-    this.props.performFunction();
+    const value = this.dataset.operator;
+    this.props.performFunction(value);
   }
 
   // if ('Memory-Clear', 'Memory-Recall', or 'Memory-History' will need to add a className="not-in-use")
-  // Will need to somehow map based 
+  // Will need to somehow map based
 
   render(){
     return (

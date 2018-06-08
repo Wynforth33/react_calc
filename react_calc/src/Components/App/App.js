@@ -52,11 +52,16 @@ class App extends React.Component {
     this.setState({secondaryDisplay: ''});
   },
 
+  performFunction(value){
+    Evaluate.evaluate(value);
+
+  }
+
   render() {
     return (
       <Header getMenu={this.getMenu} getHistory={this.getHistory} />
       <Display secondaryDisplay={this.state.secondaryDisplay} mainDisplay={this.state.secondaryDisplay} />
-      <MemoryFunctions />
+      <MemoryFunctions clearMemory={this.clearMemory} />
       <Keyboard
         clearData={this.clearData}
         clearEquation={this.clearEquation}
