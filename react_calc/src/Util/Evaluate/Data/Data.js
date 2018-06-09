@@ -1,30 +1,14 @@
 // ['Data'(Object)] for Main Calculator Variables/Functions
 const Data = {
-  numbers: ['0','1','2','3','4','5','6','7','8','9'],
-  keys: document.getElementById('keyboard').getElementsByTagName('button'),
+  // Data 'State'
   history: [],
   equation: '',
   firstTerm: 0,
   currentOperator:'',
 
-
-  numberButton: val => {
-  	if (Data.currentOperator === '=') {
-  		Data.clearDisplay();
-  		Data.currentOperator = '';
-  		Data.displayValue(val);
-  	} else {
-  		Data.displayValue(val);
-  	}
-  },
-
-
-
   higherOperation: operator => {
     const val = document.getElementById('display').innerHTML;
-  	let x;
-    let y;
-  	let xOperated;
+  	let x, y, xOperated;
   	if (val === ''){
   		x = Data.firstTerm;
   	} else {
@@ -40,6 +24,7 @@ const Data = {
   		    xOperated = parseFloat((y * percentOfX).toFixed(9)).toString();
   	    }
         break;
+
   	  case 'Math.sqrt':
   		  if (x < 0){
   		    document.getElementById('display').innerHTML = 'Error!';
@@ -47,12 +32,15 @@ const Data = {
   		    xOperated = parseFloat(eval(`${operator}(${x})`).toFixed(9)).toString();
   		  }
         break;
+
   	  case '**2':
   		  xOperated = parseFloat(eval(`${x}${operator}`).toFixed(9)).toString();
         break;
+
   	  case '1/':
   		  xOperated = parseFloat(eval(`${operator}${x}`).toFixed(9)).toString();
         break;
+
   	  case '0-':
   		  xOperated = parseFloat((0 - x).toFixed(9)).toString();
         break;
@@ -60,11 +48,11 @@ const Data = {
   	if (xOperated.length > 11) {
   		xOperated = xOperated.substring(0,11);
   	}
-    document.getElementById('display').innerHTML = xOperated;
+    return xOperated;
   },
 
-
   basicOperation: operator => {
+    let response;
     const val = document.getElementById('display').innerHTML;
   	if (val !== ''){
   		Data.firstTerm = document.getElementById('display').innerHTML;
@@ -75,57 +63,32 @@ const Data = {
   			Data.equation += `${Data.firstTerm} `;
   		}
   		Data.history.push(`${Data.firstTerm} ${Data.currentOperator} `);
-  		Data.displayValueSecondary(Data.equation);
-  		Data.clearDisplay();
+      return response = {
+        secondaryDisplay: Data.equation,
+        mainDisplay: ''
+      }
   	}
   	if (operator === '=') {
   		let e = parseFloat(eval(Data.equation).toFixed(9)).toString();
   		if (e.length > 11) {
   			e = e.substring(0,11);
   		}
-  		Data.displayValue(e);
-  		Data.history.push(`${Data.equation}= ${e}`);
-  		Data.equation = '';
-  		Data.clearSecondaryDisplay();
+      Data.history.push(`${Data.equation}= ${e}`);
+      Data.equation = '';
+      return response = {
+        secondaryDisplay: '',
+        mainDisplay: e,
+        isEqual: true
+      }
   	}
   },
-
-
-  displayValue: val => {
-    const input = document.getElementById('display').innerHTML
-  	if (input.length < 11) {
-  		document.getElementById('display').innerHTML += val;
-  	}
-  },
-
-
-  displayValueSecondary: val => {
-  	document.getElementById('secondary-display').innerHTML = '';
-  	document.getElementById('secondary-display').innerHTML += val;
-  },
-
 
   clearData: () => {
+    Data.history = [];
   	Data.equation = '';
   	Data.firstTerm = 0;
   	Data.currentOperator = '';
-  },
-
-
-  clearEquation: () => {
-  	Data.equation = '';
-  },
-
-
-  clearDisplay: () => {
-  	document.getElementById('display').innerHTML = '';
-  },
-
-
-  clearSecondaryDisplay: () => {
-  	document.getElementById('secondary-display').innerHTML = '';
-  },
-
+  }, //yes
 };
 
 // Exports

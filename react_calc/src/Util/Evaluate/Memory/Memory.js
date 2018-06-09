@@ -1,11 +1,13 @@
 // ['Memory'(Object)] for Calculator Memory Variables/Functions
 const Memory = {
+  // Memory 'State'
   history: [],
   firstTerm: 0,
   secondTerm: 0,
   notInUse: true,
   specialButtons: document.getElementsByClassName('not-in-use'),
 
+  //Memory Methods
   memoryHistory: (x, operator, y, e) => {
     if (operator) {
   		const equationString = `${x} ${operator} ${y} = ${e}`;

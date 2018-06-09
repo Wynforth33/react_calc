@@ -1,30 +1,22 @@
 // Imports
 import React from 'react';
 import './MemoryFunctions.css'; // 'MemoryFunctions' Stylesheet
+import Button from '../Button/Button'; // <Button />
 
 // Create <MemoryFunctions /> ['React'(Component)]
 class MemoryFunctions extends React.Component {
   render(){
-    return (
+    return(
       <div className="row flex-row" id="memory">
-        <div>
-          <button class="not-in-use" id="memory-clear">MC</button>
-        </div>
-        <div>
-          <button class="not-in-use" id="memory-recall" >MR</button>
-        </div>
-        <div>
-          <button id="memory-add">M+</button>
-        </div>
-        <div>
-          <button id="memory-subtract">M-</button>
-        </div>
-        <div>
-          <button id="memory-store">MS</button>
-        </div>
-        <div>
-          <button class="not-in-use" id="memory-history" data-operator="memory-history">M&blacktriangledown;</button>
-        </div>
+        {
+          this.props.buttons.map( btn => {
+            <div className="button">
+              <Button
+                pFunc={this.props.pFunc}
+                btn={btn} />
+            </div>
+          })
+        }
       </div>
     );
   }
