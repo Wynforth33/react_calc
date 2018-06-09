@@ -6,7 +6,7 @@ import './SecondaryDisplay.css'; // 'SecondaryDisplay' Stylesheet
 class SecondaryDisplay extends React.Component {
   render(){
     return (
-      <div className="flex-row" id="secondary-display"></div>
+      <div className="flex-row" id="secondary-display">{this.props.secondaryDisplay}</div>
     );
   }
 }

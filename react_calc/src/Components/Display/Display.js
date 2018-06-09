@@ -9,8 +9,8 @@ class Display extends React.Component {
   render(){
     return (
       <div class="flex-column display">
-        <SecondaryDisplay />
-        <MainDisplay />
+        <SecondaryDisplay secondaryDisplay={this.props.secondaryDisplay} />
+        <MainDisplay mainDisplay={this.props.mainDisplay}  />
       </div>
     );
   }

@@ -8,9 +8,11 @@ import History from '../History/History'; // <History />
 class Header extends React.Component {
   render() {
     return (
-      <header class="flex-row">
-        <Menu getMenu={this.props.getMenu} />
-        <h1>Standard</h1>
+      <header className="flex-row">
+        <nav className="flex-row">
+          <Menu getMenu={this.props.getMenu} />
+          <h1>Standard</h1>
+        </nav>
         <History getHistory={this.props.getHistory} />
       </header>
     );
