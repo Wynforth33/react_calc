@@ -61,11 +61,11 @@ const Data = {
   		Data.firstTerm = document.getElementById('display').innerHTML;
   		Data.currentOperator = operator;
   		if (operator !== '='){
-  			Data.equation += `${Data.firstTerm} ${Data.currentOperator} `;
+  			Data.equation += ` ${Data.firstTerm} ${Data.currentOperator} `;
   		} else {
   			Data.equation += `${Data.firstTerm} `;
   		}
-  		Data.history.push(`${Data.firstTerm} ${Data.currentOperator} `);
+  		Data.history.push(` ${Data.firstTerm} ${Data.currentOperator} `);
       return {
         secondaryDisplay: Data.equation,
         mainDisplay: ''
@@ -76,7 +76,7 @@ const Data = {
   		if (e.length > 11) {
   			e = e.substring(0,11);
   		}
-      Data.history.push(`${Data.equation}= ${e}`);
+      Data.history.push(` ${Data.equation}= ${e} `);
       Data.equation = '';
       return {
         secondaryDisplay: '',

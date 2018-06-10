@@ -10,7 +10,7 @@ const Memory = {
   //Memory Methods
   memoryHistory: (x, operator, y, e) => {
     if (operator) {
-  		const equationString = `${x} ${operator} ${y} = ${e}`;
+  		const equationString = ` ${x} ${operator} ${y} = ${e} `;
   		Memory.history.push(equationString);
   	} else {
   		Memory.firstTerm = document.getElementById('display').innerHTML;

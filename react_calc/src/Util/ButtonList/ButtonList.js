@@ -193,7 +193,7 @@ const ButtonList = {
     {
       key: 'memory-history',
       operator: 'memory-history',
-      innerHtml: 'V',
+      innerHtml: 'Mv',
       class: 'not-in-use'
     }
   ]

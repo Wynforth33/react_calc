@@ -91,7 +91,11 @@ const Evaluate ={
   },
 
   getHistory(){
-    return Data.history;
+    if(Data.history.length > 0) {
+      return Data.history;
+    } else {
+      return 'History is Empty';
+    }
   }
 }
 
