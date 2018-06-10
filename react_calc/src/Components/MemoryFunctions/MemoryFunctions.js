@@ -10,16 +10,12 @@ class MemoryFunctions extends React.Component {
       <div className="row flex-row" id="memory">
       {
         this.props.buttons.map( btn => {
-          return (
-            <Button
-                pFunc={this.props.pFunc}
-                btn={btn} />
-          );
-        });
+          return <Button key={btn.key} onPress={this.props.onPress} btn={btn} />
+        })
       }
       </div>
-    );
-  };
+    )
+  }
 }
 
 // Exports

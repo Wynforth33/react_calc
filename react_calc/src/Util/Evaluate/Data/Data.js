@@ -44,6 +44,10 @@ const Data = {
   	  case '0-':
   		  xOperated = parseFloat((0 - x).toFixed(9)).toString();
         break;
+
+      default :
+        xOperated = 0;
+        break;
   	}
   	if (xOperated.length > 11) {
   		xOperated = xOperated.substring(0,11);
@@ -52,7 +56,6 @@ const Data = {
   },
 
   basicOperation: operator => {
-    let response;
     const val = document.getElementById('display').innerHTML;
   	if (val !== ''){
   		Data.firstTerm = document.getElementById('display').innerHTML;
@@ -63,7 +66,7 @@ const Data = {
   			Data.equation += `${Data.firstTerm} `;
   		}
   		Data.history.push(`${Data.firstTerm} ${Data.currentOperator} `);
-      return response = {
+      return {
         secondaryDisplay: Data.equation,
         mainDisplay: ''
       }
@@ -75,7 +78,7 @@ const Data = {
   		}
       Data.history.push(`${Data.equation}= ${e}`);
       Data.equation = '';
-      return response = {
+      return {
         secondaryDisplay: '',
         mainDisplay: e,
         isEqual: true

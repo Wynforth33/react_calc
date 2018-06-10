@@ -8,7 +8,7 @@ import SecondaryDisplay from '../SecondaryDisplay/SecondaryDisplay'; // <MainDis
 class Display extends React.Component {
   render(){
     return (
-      <div class="flex-column display">
+      <div className="flex-column display">
         <SecondaryDisplay secondaryDisplay={this.props.secondaryDisplay} />
         <MainDisplay mainDisplay={this.props.mainDisplay}  />
       </div>

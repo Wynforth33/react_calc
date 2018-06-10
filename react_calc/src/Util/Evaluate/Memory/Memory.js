@@ -33,9 +33,9 @@ const Memory = {
 
   memoryMath: operator => {
     Memory.secondTerm = document.getElementById('display').innerHTML;
-  	const x = parseInt(Memory.firstTerm);
-  	const y = parseInt(Memory.secondTerm);
-  	const e = parseFloat(eval(`x ${operator} y`).toFixed(9)).toString();
+  	const x = parseInt(Memory.firstTerm, 10);
+  	const y = parseInt(Memory.secondTerm, 10);
+  	const e = parseFloat(eval(`${x}${operator}${y}`).toFixed(9)).toString();
   	Memory.memoryHistory(Memory.firstTerm, '+', Memory.secondTerm, e);
   	Memory.firstTerm = e;
   	Memory.toggleMemory(false);

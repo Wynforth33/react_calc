@@ -15,11 +15,12 @@ class App extends React.Component {
     this.state= {
       secondaryDisplay: '',
       mainDisplay: '',
-      isEqual: false;
+      isEqual: false
     };
     this.getMenu = this.getMenu.bind(this);
     this.getHistory = this.getHistory.bind(this);
-    this.performFunction = performFunction.bind(this);
+    this.numberButton = this.numberButton.bind(this);
+    this.performFunction = this.performFunction.bind(this);
 
   }
   // Bound Functions (To Be Passsed)
@@ -37,11 +38,10 @@ class App extends React.Component {
     if (numbers.includes(val)) {
       this.numberButton(val);
     } else {
-      Evaluate.evaluate(val).then( result => {
-        this.setState(result);
-      });
+      const result = Evaluate.evaluate(val);
+      this.setState(result);
     }
-  } 
+  }
 
   // Local Functions (Not To Be Passed)
   updateMainDisplay(val){
@@ -61,9 +61,10 @@ class App extends React.Component {
       const newValueBack = this.state.mainDisplay.slice(0, -1);
       this.updateMainDisplay(newValueBack);
     } else if (val === '.') {
-      if (!this.state.mainDisplay.includes('.'))
-      const newValueDecimal = this.state.mainDisplay.concat('.');
-      this.updateMainDisplay(newValueDecimal);
+      if (!this.state.mainDisplay.includes('.')){
+        const newValueDecimal = this.state.mainDisplay.concat('.');
+        this.updateMainDisplay(newValueDecimal);
+      }
     } else {
       this.updateMainDisplay(val);
     }
@@ -79,9 +80,11 @@ class App extends React.Component {
 
   render() {
     return (
-      <Header getMenu={this.getMenu} getHistory={this.getHistory} />
-      <Display secondaryDisplay={this.state.secondaryDisplay} mainDisplay={this.state.mainDisplay} />
-      <Keyboard pFunc={this.props.performFunction}/>
+      <div>
+        <Header getMenu={this.getMenu} getHistory={this.getHistory} />
+        <Display secondaryDisplay={this.state.secondaryDisplay} mainDisplay={this.state.mainDisplay} />
+        <Keyboard onPress={this.performFunction}/>
+      </div>
     );
   }
 }

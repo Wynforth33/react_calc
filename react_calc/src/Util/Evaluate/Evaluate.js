@@ -3,40 +3,30 @@ import Data from './Data/Data'; // 'Data' Object
 import Memory from './Memory/Memory'; // 'Memory' Object
 
 const Evaluate ={
-  evaulate(val){
+  evaluate(val){
+    let result;
     switch(val){
-      let response;
       // Memory Functions
       case 'MC': //Memory-Clear
         Memory.clearMemory();
-        return response = {
-          mainDisplay: ''
-        };
+        return { mainDisplay : '' };
 
       case 'MR': //Memory-Recall
         const memoryVal = Memory.firstTerm;
-        return response = {
-          mainDisplay: memoryVal
-        };
+        return { mainDisplay : memoryVal };
 
       case 'M+': //Memory-Add
         Memory.memoryMath('+');
-        return response = {
-          mainDisplay: ''
-        };
+        return { mainDisplay : '' };
 
       case 'M-': //Memory-Subtract
         Memory.memoryMath('-');
-        return response = {
-          mainDisplay: ''
-        };
+        return { mainDisplay : '' };
 
       case 'MS': //Memory-Store
         Memory.memoryHistory();
         Memory.toggleMemory(false);
-        return response = {
-          mainDisplay: ''
-        };
+        return { mainDisplay : '' };
 
       case 'memory-history': //Memory-History
         console.log(Memory);
@@ -45,85 +35,60 @@ const Evaluate ={
 
       // Keyboard Functions
       case '%':  //Percent
-        Data.higherOperation('/100').then(
-          result => {
-            return response = {
-              mainDisplay: result;
-            }
-          });
+        result = Data.higherOperation('/100');
+        return { mainDisplay: result };
 
       case 'root': //Square-Root
-        Data.higherOperation('Math.sqrt').then(
-          result => {
-            return response = {
-              mainDisplay: result;
-            }
-          });
+        result = Data.higherOperation('Math.sqrt');
+        return { mainDisplay: result };
 
       case 'squared': //Squared
-        Data.higherOperation('**2').then(
-          result => {
-            return response = {
-              mainDisplay: result;
-            }
-          });
+        result = Data.higherOperation('**2');
+        return { mainDisplay : result };
 
       case '1/x': //Reciprocal
-        Data.higherOperation('1/').then(
-          result => {
-            return response = {
-              mainDisplay: result;
-            }
-          });
+        result = Data.higherOperation('1/')
+        return { mainDisplay: result };
 
       case 'CE': //Clear-Entry
-        return response = {
-          mainDisplay: ''
-        };
+        return { mainDisplay : '' };
 
       case 'C': //Clear-All
-        Data.clearData(); //Data
-        Memory.clearMemory(); //Memory
-        return response = {
+        Data.clearData();
+        Memory.clearMemory();
+        return {
           mainDisplay: '',
           secondaryDisplay: ''
         };
 
       case 'divide': //Divide
-        Data.basicOperation('/').then( result => {
-          return result;
-        });
+        result = Data.basicOperation('/')
+        return result;
 
       case 'multiply': //Multiply
-        Data.basicOperation('*').then( result => {
-          return result;
-        });
+        result = Data.basicOperation('*')
+        return result;
 
       case 'minus': //Subtract
-        Data.basicOperation('-').then( result => {
-          return result;
-        });
+        result = Data.basicOperation('-')
+        return result;
 
       case 'add': //Add
-        Data.basicOperation('+').then( result => {
-          return result;
-        });
+        result = Data.basicOperation('+');
+        return result;
 
       case 'negate': //Plus-Minus (Negate)
-        Data.higherOperation('0-').then(
-          result => {
-            return response = {
-              mainDisplay: result;
-            }
-          });
+        result = Data.higherOperation('0-');
+        return { mainDisplay: result };
 
       case '=': //Evaluate
-        Data.basicOperation('=').then(
-          result => {
-            return result;
-          });
+        result = Data.basicOperation('=');
+        return result;
+
+      default :
+        return result;
     }
-  }
+  },
 
   getHistory(){
     return Data.history;

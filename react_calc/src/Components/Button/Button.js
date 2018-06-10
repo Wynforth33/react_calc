@@ -10,13 +10,13 @@ class Button extends React.Component {
   }
 
   handleClick(){
-    const val = this.dataset.operator;
-    this.props.pFunc(val);
+    const val = this.props.btn.operator;
+    this.props.onPress(val);
   }
 
   renderClass(){
     if (this.props.btn.class){
-      return `className={btnProps.Class}`;
+      return this.props.btn.class;
     }
   }
 
@@ -25,9 +25,8 @@ class Button extends React.Component {
     return (
       <div>
         <button
-          {this.renderClass()}
-          onClick={this.handleClick}
-          data-operator={btnProps.operator}>
+          className={this.renderClass()}
+          onClick={this.handleClick}>
           {btnProps.innerHtml}
         </button>
       </div>
