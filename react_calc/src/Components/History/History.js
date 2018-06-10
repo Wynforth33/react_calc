@@ -16,7 +16,7 @@ class History extends React.Component {
   render(){
     return (
       <div>
-        <button className="menu" id="history" onClick={this.handleClick}>H&blacktriangledown;</button>
+        <button className="menu" id="history" onClick={this.handleClick}>Hv</button>
       </div>
     );
   }

@@ -11,13 +11,13 @@ const ButtonList = {
       {
         key: 'root',
         operator: 'root',
-        innerHtml: '&radic;',
+        innerHtml: 'Sqrt',
         class: null
       },
       {
         key: 'squared',
         operator: 'squared',
-        innerHtml: 'x&sup2;',
+        innerHtml: 'x^2',
         class: null
       },
       {
@@ -41,15 +41,15 @@ const ButtonList = {
         class: null
       },
       {
-        key: 'backspace',
-        operator: 'backspace',
-        innerHtml: '<img src="./backspace.png">',
+        key: 'BS',
+        operator: 'BS',
+        innerHtml: '<=',
         class: null
       },
       {
         key: 'divide',
         operator: 'divide',
-        innerHtml: '&divide;',
+        innerHtml: '/',
         class: 'basic'
       }
     ],
@@ -75,7 +75,7 @@ const ButtonList = {
       {
         key: 'multiply',
         operator: 'multiply',
-        innerHtml: '&times;',
+        innerHtml: 'x',
         class: 'basic'
       }
     ],
@@ -101,7 +101,7 @@ const ButtonList = {
       {
         key: 'minus',
         operator: 'minus',
-        innerHtml: '&minus;',
+        innerHtml: '-',
         class: 'basic'
       }
     ],
@@ -127,7 +127,7 @@ const ButtonList = {
       {
         key: 'add',
         operator: 'add',
-        innerHtml: '&plus;',
+        innerHtml: '+',
         class: 'basic'
       }
     ],
@@ -135,7 +135,7 @@ const ButtonList = {
       {
         key: 'negate',
         operator: 'negate',
-        innerHtml: '&plusmn;',
+        innerHtml: '+/-',
         class: 'basic'
       },
       {
@@ -193,7 +193,7 @@ const ButtonList = {
     {
       key: 'memory-history',
       operator: 'memory-history',
-      innerHtml: 'M&blacktriangledown;',
+      innerHtml: 'V',
       class: 'not-in-use'
     }
   ]
