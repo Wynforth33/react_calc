@@ -58,7 +58,7 @@ const Data = {
   basicOperation: operator => {
     const val = document.getElementById('display').innerHTML;
   	if (val !== ''){
-  		Data.firstTerm = document.getElementById('display').innerHTML;
+  		Data.firstTerm = val;
   		Data.currentOperator = operator;
   		if (operator !== '='){
   			Data.equation += ` ${Data.firstTerm} ${Data.currentOperator} `;
